@@ -50,17 +50,29 @@ $.getJSON("sample.geojson", function (data) {
 map.addControl(L.control.zoom({position: 'topright'}));
 
 // search
-var options = {
-            geojsonServiceAddress: "sample.geojson",
-            placeholderMessage: "(例： 〇〇小学校、トイレットペーパー)",
-            notFoundMessage: "に一致する検索対象がありません。",
-            notFoundHint: "検索条件を変えて再検索してください。",
-            pointGeometryZoomLevel:   15
-        };
+// var options = {
+//             geojsonServiceAddress: "sample.geojson",
+//             placeholderMessage: "(例： 〇〇小学校、トイレットペーパー)",
+//             notFoundMessage: "に一致する検索対象がありません。",
+//             notFoundHint: "検索条件を変えて再検索してください。",
+//             pointGeometryZoomLevel:   15
+//         };
  
-        $("#searchContainer").GeoJsonAutocomplete(options);
+//         $("#searchContainer").GeoJsonAutocomplete(options);
 
-map.setView([35.6599926,139.7442758], 13);
+// map.setView([35.6599926,139.7442758], 13);
+
+// search 2
+var controlSearch = new L.Control.Search({
+    　　　　position:'topright',
+    　　　　layer: searchLayer,
+    　　　　initial: false,
+    　　　　zoom: 15,
+    　　　　　marker: false
+    　　});
+     mymap.addControl( controlSearch );
+
+     
 </script>
 </body>
 </html>
