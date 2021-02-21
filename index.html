@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+  <meta charset="UTF-8">
+  <title>聞き取り上手</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+    crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+    crossorigin=""></script>
+  
+  <!-- Leaflet-PlugIn -->
+  <script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.8.24/jquery-ui.min.js"></script>
+  <script src="js/leaflet.customsearchbox.min.js"></script>
+  <link href="css/searchbox.min.css" rel="stylesheet" />
+  <!-- Leaflet-PlugIn -->
+
+<style>
+  body {padding: 0; margin: 0}
+  html, body, #map {height: 100%; width: 100%;}
+</style>
+</head>
+
+<body>
+<div id="map"></div>
+<script>
+var map = L.map('map');
+
+L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
+  attribution: "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>地理院タイル</a>"
+}).addTo(map);
+
+//marker_イメージ
+L.marker([35.6727333,139.7997436]).addTo(map).bindPopup("場所：数矢小学校</br>不足物資:トイレットペーパー");
+
+//GeoJSON
+$.getJSON("sample.geojson", function (data) {
+    L.geoJson(data, {
+      onEachFeature: function (feature, layer) {
+    var field = '場所 :   ' + feature.properties.place + '<br>' + 
+                '不足物資 :   ' + feature.properties.Supplies;
+    layer.bindPopup(field);
+}}).addTo(map);
+});
+
+// search
+// // plugin
+// var searchboxControl=createSearchboxControl();
+//       var control = new searchboxControl({
+//           sidebarTitleText: 'Header Title Hoge',
+//           sidebarMenuItems: {
+//               Items: [
+//                   { type: "link", name: "google", href: "http://google.com", icon: "icon-cloudy" },
+//                   { type: "link", name: "leafletjs", href: "http://leafletjs.com", icon: "icon-local-carwash" },
+//                   { type: "button", name: "call alert button", onclick: "alert('alert button')", icon: "icon-potrait" },
+//                   { type: "button", name: "call function button", onclick: "func_btn_click();", icon: "icon-local-dining" }
+//               ]
+//           }
+//       });
+
+//       // 検索ボタンが押された時のコールバック
+//       control._searchfunctionCallBack = function (srhkeywords)
+//       {
+//           if (!srhkeywords) {
+//               alert("検索ワードを入力してください");
+//               return;
+//           }
+
+//           // 表示データのタイトルに検索ワードが含まれているかチェック（前方一致）
+//           for(i in data) {
+//               if(data[i].title.indexOf(srhkeywords) === 0){
+//                   // 地図の座標を移動
+//                   map.setView(data[i].loc, 15);
+
+//                   return;
+//               }
+//           }
+//           alert("検索ワードに該当するデータはありません。");
+//       }
+
+//       map.addControl(control);
+
+//       function func_btn_click(){
+//           alert('function button');
+//       }
+
+map.setView([35.6599926,139.7442758], 13);
+</script>
+</body>
+</html>
