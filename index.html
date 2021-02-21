@@ -45,18 +45,9 @@ $.getJSON("sample.geojson", function (data) {
     layer.bindPopup(field);
 }}).addTo(map);
 });
-map.addControl(L.control.zoom({position: 'topright'}));
 
 // search
-var options = {
-            geojsonServiceAddress: "sample.geojson",
-            placeholderMessage: "検索条件を入力してください。",
-            notFoundMessage: "に一致する検索対象がありません。",
-            notFoundHint: "検索条件を変えて再検索してください。",
-            pointGeometryZoomLevel:   15
-        };
- 
-        $("#searchContainer").GeoJsonAutocomplete(options);
+
 
 map.setView([35.6599926,139.7442758], 13);
 </script>
