@@ -19,15 +19,15 @@ $.getJSON("https://ghp-voice.s3-ap-northeast-1.amazonaws.com/sample.geojson", fu
 
 
 // search
-var options = {
-            geojsonServiceAddress: "https://ghp-voice.s3-ap-northeast-1.amazonaws.com/sample.geojson",
-            placeholderMessage: "(例： 〇〇小学校、トイレットペーパー)",
-            notFoundMessage: "に一致する検索対象がありません。",
-            notFoundHint: "検索条件を変えて再検索してください。",
-            pointGeometryZoomLevel:   15
-        };
+// var options = {
+//             geojsonServiceAddress: "https://ghp-voice.s3-ap-northeast-1.amazonaws.com/sample.geojson",
+//             placeholderMessage: "(例： 〇〇小学校、トイレットペーパー)",
+//             notFoundMessage: "に一致する検索対象がありません。",
+//             notFoundHint: "検索条件を変えて再検索してください。",
+//             pointGeometryZoomLevel:   15
+//         };
  
-        $("#searchContainer").GeoJsonAutocomplete(options);
+//         $("#searchContainer").GeoJsonAutocomplete(options);
 
 
 
