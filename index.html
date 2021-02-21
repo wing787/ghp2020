@@ -34,7 +34,7 @@ L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
 //L.marker([35.6727333,139.7997436]).addTo(map).bindPopup("場所：数矢小学校</br>不足物資:トイレットペーパー");
 
 //GeoJSON
-$.getJSON("sample.geojson", function (data) {
+$.getJSON("https://ghp-voice.s3-ap-northeast-1.amazonaws.com/sample.geojson", function (data) {
     L.geoJson(data, {
       onEachFeature: function (feature, layer) {
     var field = '場所 :   ' + feature.properties.place + '<br>' + 
@@ -55,7 +55,7 @@ map.addControl(L.control.zoom({position: 'topright'}));
  
 //         $("#searchContainer").GeoJsonAutocomplete(options);
 
-// map.setView([35.6599926,139.7442758], 13);
+
 
 // search 2
 // var controlSearch = new L.Control.Search({
@@ -67,8 +67,7 @@ map.addControl(L.control.zoom({position: 'topright'}));
 //     　　});
 //      mymap.addControl( controlSearch );
 
-
+map.setView([35.6599926,139.7442758], 13);
 </script>
 </body>
 </html>
-
