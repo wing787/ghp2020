@@ -1,29 +1,3 @@
-<!DOCTYPE html>
-<html lang="ja">
-  <head>
-  <meta charset="UTF-8">
-  <title>聞き取り上手</title>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-    crossorigin=""/>
-  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
-    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
-    crossorigin=""></script>
-  
-  <!-- Leaflet-PlugIn -->
-  <link rel="stylesheet" href="css/leaflet-search.min.css">
-    <script src="js/leaflet-search.min.js"></script>
-  <!-- Leaflet-PlugIn -->
-
-<style>
-  body {padding: 0; margin: 0}
-  html, body, #map {height: 100%; width: 100%;}
-</style>
-</head>
-
-<body>
-<div id="map"></div>
-<script>
 var map = L.map('map');
 
 L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
@@ -42,6 +16,7 @@ $.getJSON("https://ghp-voice.s3-ap-northeast-1.amazonaws.com/sample.geojson", fu
     layer.bindPopup(field);
 }}).addTo(map);
 });
+
 map.addControl(L.control.zoom({position: 'topright'}));
 
 // search
@@ -68,6 +43,3 @@ map.addControl(L.control.zoom({position: 'topright'}));
 //      mymap.addControl( controlSearch );
 
 map.setView([35.6599926,139.7442758], 13);
-</script>
-</body>
-</html>
